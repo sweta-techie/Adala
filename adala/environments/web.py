@@ -56,7 +56,7 @@ class WebStaticEnvironment(StaticEnvironment):
 
         # wait for feedback
         with Progress() as progress:
-            task = progress.add_task(f"Waiting for feedback...", total=3600)
+            task = progress.add_task("Waiting for feedback...", total=3600)
             fb_records = []
             while len(fb_records) < num_feedbacks:
                 progress.advance(task, 10)

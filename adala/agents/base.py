@@ -82,7 +82,7 @@ class Agent(BaseModel, ABC):
         runtime_names = ", ".join(self.runtimes.keys())
 
         return (
-            f"[bold blue]Agent Instance[/bold blue]\n\n"
+            "[bold blue]Agent Instance[/bold blue]\n\n"
             f"Environment: {self.environment.__class__.__name__}\n"
             f"Skills: {skill_names}\n"
             f"Runtimes: {runtime_names}\n"
@@ -147,9 +147,9 @@ class Agent(BaseModel, ABC):
             print_error(
                 f"The Agent.{runtime} is set to {val}, "
                 f"but this runtime is not available in the list: {list(runtimes)}. "
-                f"Please choose one of the available runtimes and initialize the agent again, for example:\n\n"
+                "Please choose one of the available runtimes and initialize the agent again, for example:\n\n"
                 f"agent = Agent(..., {runtime}='{default_value}')\n\n"
-                f"Make sure the default runtime is available in the list of runtimes. For example:\n\n"
+                "Make sure the default runtime is available in the list of runtimes. For example:\n\n"
                 f"agent = Agent(..., runtimes={{'{default_value}': OpenAIRuntime(model='gpt-4')}})\n\n"
             )
             raise ValueError(f"default runtime {val} not found in provided runtimes.")
@@ -208,8 +208,8 @@ class Agent(BaseModel, ABC):
         runtime = self.teacher_runtimes[runtime]
         if not runtime:
             raise ValueError(
-                f"Teacher Runtime is requested, but it was not set."
-                f"Please provide a teacher runtime in the agent's constructor explicitly:"
+                "Teacher Runtime is requested, but it was not set."
+                "Please provide a teacher runtime in the agent's constructor explicitly:"
                 f"agent = Agent(..., teacher_runtimes={{'default': OpenAIChatRuntime(model='gpt-4')}})"
             )
         return runtime

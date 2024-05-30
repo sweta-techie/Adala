@@ -166,7 +166,7 @@ class LinearSkillSet(SkillSet):
             self.skill_sequence = list(self.skills.keys())
         if len(self.skill_sequence) != len(self.skills):
             raise ValueError(
-                f"skill_sequence must contain all skill names - "
+                "skill_sequence must contain all skill names - "
                 f"length of skill_sequence is {len(self.skill_sequence)} "
                 f"while length of skills is {len(self.skills)}"
             )

@@ -170,15 +170,15 @@ async def async_process_streaming_output(
                     logger.debug(f"No messages in topic {tp.topic}")
 
             if not data:
-                logger.info(f"No messages in any topic")
+                logger.info("No messages in any topic")
         finally:
             job = process_file_streaming.AsyncResult(input_job_id)
             # TODO no way to recover here if connection to main app is lost, job will be stuck at "PENDING" so this will loop forever
             if job.status in ["SUCCESS", "FAILURE", "REVOKED"]:
                 input_job_running = False
-                logger.info(f"Input job done, stopping output job")
+                logger.info("Input job done, stopping output job")
             else:
-                logger.info(f"Input job still running, keeping output job running")
+                logger.info("Input job still running, keeping output job running")
 
     await consumer.stop()
 
