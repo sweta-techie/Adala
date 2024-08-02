@@ -8,6 +8,7 @@ from adala.skills import SkillSet
 from adala.utils.internal_data import InternalDataFrame, InternalSeries
 from collections import defaultdict
 from rich.progress import Progress, SpinnerColumn, TimeElapsedColumn
+from security import safe_requests
 
 
 class WebStaticEnvironment(StaticEnvironment):
@@ -21,7 +22,7 @@ class WebStaticEnvironment(StaticEnvironment):
     url: str
 
     def _get_fb_records(self):
-        fb_records = requests.get(f"{self.url}/feedback", timeout=3).json()
+        fb_records = safe_requests.get(f"{self.url}/feedback", timeout=3).json()
         fb_records = [Feedback(**r) for r in fb_records]
         return fb_records
 
